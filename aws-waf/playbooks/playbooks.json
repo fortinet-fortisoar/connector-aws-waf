@@ -1,0 +1,406 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "9a8bce34-91bc-4a5f-9dd6-3dddc7345a3f",
+      "@type": "WorkflowCollection",
+      "name": "Sample - AWS WAF - 1.0.0",
+      "description": "AWS WAF is a web application firewall that lets you monitor and manage web requests that are forwarded to protected AWS resources.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Aws",
+        "aws-waf"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "b69b3423-9c62-4f0f-a16c-3c628631dbce",
+          "collection": "/api/3/workflow_collections/9a8bce34-91bc-4a5f-9dd6-3dddc7345a3f",
+          "triggerLimit": null,
+          "description": "Creates an IPSet, which you use to identify web requests that originate from specific IP addresses or ranges of IP addresses.",
+          "name": "Create IP Set",
+          "tag": "#AWS WAF",
+          "recordTags": [
+            "Aws",
+            "aws-waf"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/fcb474d0-c907-4bad-bf6d-5297bbdbfb49",
+          "steps": [
+            {
+              "uuid": "fcb474d0-c907-4bad-bf6d-5297bbdbfb49",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "9d9860cd-d8fe-474d-9e24-95ba491f68ba",
+                "title": "AWS WAF: Create IP Set",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ce62fba3-19c2-42ff-a17c-ab0ea333216f",
+              "@type": "WorkflowStep",
+              "name": "Create IP Set",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "AWS WAF",
+                "config": "''",
+                "params": {
+                  "Tags": "[\n        {\n            'Key': 'string',\n            'Value': 'string'\n        },\n    ]"
+                },
+                "version": "1.0.0",
+                "connector": "aws-waf",
+                "operation": "create_ip_set",
+                "operationTitle": "Create IP Set"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "d915e256-f8ee-4112-bf4b-6cb3ac52abd5",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create IP Set",
+              "sourceStep": "/api/3/workflow_steps/fcb474d0-c907-4bad-bf6d-5297bbdbfb49",
+              "targetStep": "/api/3/workflow_steps/ce62fba3-19c2-42ff-a17c-ab0ea333216f"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "c3b2450b-ccd6-46ed-947a-0ef60e816606",
+          "collection": "/api/3/workflow_collections/9a8bce34-91bc-4a5f-9dd6-3dddc7345a3f",
+          "triggerLimit": null,
+          "description": "Updates the specified IPSet based on the input parameters specified.",
+          "name": "Update IP Set",
+          "tag": "#AWS WAF",
+          "recordTags": [
+            "Aws",
+            "aws-waf"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c4911a1f-7194-4114-9544-db37d011f9b0",
+          "steps": [
+            {
+              "uuid": "c4911a1f-7194-4114-9544-db37d011f9b0",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "05d04b19-9d13-499b-b395-ce52cfa91706",
+                "title": "AWS WAF: Update IP Set",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "320f27c2-29ec-4584-89a1-85c9471c3603",
+              "@type": "WorkflowStep",
+              "name": "Update IP Set",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "AWS WAF",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "aws-waf",
+                "operation": "update_ip_set",
+                "operationTitle": "Update IP Set"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "8c3c7bad-6983-4815-aed0-bcc0b60fb9c2",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update IP Set",
+              "sourceStep": "/api/3/workflow_steps/c4911a1f-7194-4114-9544-db37d011f9b0",
+              "targetStep": "/api/3/workflow_steps/320f27c2-29ec-4584-89a1-85c9471c3603"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "b00e9546-1253-43e0-8100-5d9aab3ae420",
+          "collection": "/api/3/workflow_collections/9a8bce34-91bc-4a5f-9dd6-3dddc7345a3f",
+          "triggerLimit": null,
+          "description": "Retrieves an array of IPSet Summary objects for the IP sets that you manage.",
+          "name": "List IP Set",
+          "tag": "#AWS WAF",
+          "recordTags": [
+            "Aws",
+            "aws-waf"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/4759c0c2-0af9-43af-be04-4deeeb894f44",
+          "steps": [
+            {
+              "uuid": "4759c0c2-0af9-43af-be04-4deeeb894f44",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "205878ea-b2f3-438f-9538-1f34ffdb1430",
+                "title": "AWS WAF: List IP Set",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "5914cb14-ae46-415e-bda9-428b5da3ea77",
+              "@type": "WorkflowStep",
+              "name": "List IP Set",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "AWS WAF",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "aws-waf",
+                "operation": "list_ip_set",
+                "operationTitle": "List IP Set"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "630f94a3-b41f-43b5-ada1-f5a04971bb57",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> List IP Set",
+              "sourceStep": "/api/3/workflow_steps/4759c0c2-0af9-43af-be04-4deeeb894f44",
+              "targetStep": "/api/3/workflow_steps/5914cb14-ae46-415e-bda9-428b5da3ea77"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "115a5e39-ab6a-4ad4-bdc3-07cf9d349111",
+          "collection": "/api/3/workflow_collections/9a8bce34-91bc-4a5f-9dd6-3dddc7345a3f",
+          "triggerLimit": null,
+          "description": "Retrieves the specified IPSet based on the input parameters specified.",
+          "name": "Get IP Set",
+          "tag": "#AWS WAF",
+          "recordTags": [
+            "Aws",
+            "aws-waf"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/04159dbe-5db0-4970-b17d-1e674370a02c",
+          "steps": [
+            {
+              "uuid": "04159dbe-5db0-4970-b17d-1e674370a02c",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "0f2eb451-d37d-49f2-9127-2e6cee37d5bc",
+                "title": "AWS WAF: Get IP Set",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "7488d427-4a95-458a-84ff-0a1b27f40efe",
+              "@type": "WorkflowStep",
+              "name": "Get IP Set",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "AWS WAF",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "aws-waf",
+                "operation": "get_ip_set",
+                "operationTitle": "Get IP Set"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "67b3df9d-c60e-48d5-9507-e8ebc1c696b7",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get IP Set",
+              "sourceStep": "/api/3/workflow_steps/04159dbe-5db0-4970-b17d-1e674370a02c",
+              "targetStep": "/api/3/workflow_steps/7488d427-4a95-458a-84ff-0a1b27f40efe"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "44159dcb-27b5-4e03-92c9-8b240b0062e8",
+          "collection": "/api/3/workflow_collections/9a8bce34-91bc-4a5f-9dd6-3dddc7345a3f",
+          "triggerLimit": null,
+          "description": "Deletes the specified IPSet based on the input parameters specified.",
+          "name": "Delete IP Set",
+          "tag": "#AWS WAF",
+          "recordTags": [
+            "Aws",
+            "aws-waf"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/097e58d6-384f-4045-aa41-4fc1a749d373",
+          "steps": [
+            {
+              "uuid": "097e58d6-384f-4045-aa41-4fc1a749d373",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "08d2595d-e69f-463b-bada-1fff5cf7a841",
+                "title": "AWS WAF: Delete IP Set",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "5218b6c1-23df-4619-9cc5-a5a531e35d7e",
+              "@type": "WorkflowStep",
+              "name": "Delete IP Set",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "AWS WAF",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "aws-waf",
+                "operation": "delete_ip_set",
+                "operationTitle": "Delete IP Set"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "83dc3ffb-0e2f-408f-9859-701422b9326a",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete IP Set",
+              "sourceStep": "/api/3/workflow_steps/097e58d6-384f-4045-aa41-4fc1a749d373",
+              "targetStep": "/api/3/workflow_steps/5218b6c1-23df-4619-9cc5-a5a531e35d7e"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
