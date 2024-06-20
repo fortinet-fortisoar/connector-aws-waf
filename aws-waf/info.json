@@ -88,7 +88,7 @@
   "operations": [
     {
       "title": "Create IP Set",
-      "description": "Creates an IPSet, which you use to identify web requests that originate from specific IP addresses or ranges of IP addresses.",
+      "description": "Creates an IP set, which you use to identify web requests that originate from specific IP addresses or ranges of IP addresses.",
       "operation": "create_ip_set",
       "category": "investigation",
       "annotation": "create_ip_set",
@@ -100,8 +100,8 @@
           "visible": true,
           "editable": true,
           "required": true,
-          "tooltip": "Specify the name of the IP set. You cannot change the name of an IPSet after you create it.",
-          "description": "Specify the name of the IP set. You cannot change the name of an IPSet after you create it."
+          "tooltip": "Specify the name of the IP set. You cannot change the name of an IP set after you create it.",
+          "description": "Specify the name of the IP set. You cannot change the name of an IP set after you create it."
         },
         {
           "title": "Scope",
@@ -114,8 +114,8 @@
             "Cloud Front",
             "Regional"
           ],
-          "tooltip": "Specify whether this is for an Amazon CloudFront distribution or for a regional application.",
-          "description": "Specify whether this is for an Amazon CloudFront distribution or for a regional application."
+          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
+          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
         },
         {
           "title": "IP Address Version",
@@ -187,7 +187,7 @@
     },
     {
       "title": "Update IP Set",
-      "description": "Updates the specified IPSet based on the input parameters specified.",
+      "description": "Updates the specified IP set based on the input parameters specified.",
       "operation": "update_ip_set",
       "category": "investigation",
       "annotation": "update_ip_set",
@@ -199,8 +199,8 @@
           "visible": true,
           "editable": true,
           "required": true,
-          "tooltip": "Specify the name of the IP set to update. Note you cannot change the name of an IPSet after you create it.",
-          "description": "Specify the name of the IP set to update. Note you cannot change the name of an IPSet after you create it."
+          "tooltip": "Specify the name of the IP set to update. Note you cannot change the name of an IP set after you create it.",
+          "description": "Specify the name of the IP set to update. Note you cannot change the name of an IP set after you create it."
         },
         {
           "title": "ID",
@@ -223,8 +223,8 @@
             "Cloud Front",
             "Regional"
           ],
-          "tooltip": "Specify whether this is for an Amazon CloudFront distribution or for a regional application.",
-          "description": "Specify whether this is for an Amazon CloudFront distribution or for a regional application."
+          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
+          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
         },
         {
           "title": "Lock Token",
@@ -284,7 +284,7 @@
     },
     {
       "title": "List IP Set",
-      "description": "Retrieves an array of IPSet Summary objects for the IP sets that you manage.",
+      "description": "Retrieves an array of IP set Summary objects for the IP sets that you manage.",
       "operation": "list_ip_set",
       "category": "investigation",
       "annotation": "list_ip_set",
@@ -300,8 +300,8 @@
             "Cloud Front",
             "Regional"
           ],
-          "tooltip": "Specify whether this is for an Amazon CloudFront distribution or for a regional application.",
-          "description": "Specify whether this is for an Amazon CloudFront distribution or for a regional application."
+          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
+          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
         },
         {
           "title": "Limit",
@@ -351,7 +351,7 @@
     },
     {
       "title": "Get IP Set",
-      "description": "Retrieves the specified IPSet based on the input parameters specified.",
+      "description": "Retrieves the specified IP set based on the input parameters specified.",
       "operation": "get_ip_set",
       "category": "investigation",
       "annotation": "get_ip_set",
@@ -377,8 +377,8 @@
             "Cloud Front",
             "Regional"
           ],
-          "tooltip": "Specify whether this is for an Amazon CloudFront distribution or for a regional application.",
-          "description": "Specify whether this is for an Amazon CloudFront distribution or for a regional application."
+          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
+          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
         },
         {
           "title": "ID",
@@ -417,7 +417,7 @@
     },
     {
       "title": "Delete IP Set",
-      "description": "Deletes the specified IPSet based on the input parameters specified.",
+      "description": "Deletes the specified IP set based on the input parameters specified.",
       "operation": "delete_ip_set",
       "category": "investigation",
       "annotation": "delete_ip_set",
@@ -443,8 +443,8 @@
             "Cloud Front",
             "Regional"
           ],
-          "tooltip": "Specify whether this is for an Amazon CloudFront distribution or for a regional application.",
-          "description": "Specify whether this is for an Amazon CloudFront distribution or for a regional application."
+          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
+          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
         },
         {
           "title": "ID",
