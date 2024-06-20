@@ -1,0 +1,486 @@
+{
+  "name": "aws-waf",
+  "label": "AWS WAF",
+  "description": "AWS WAF is a web application firewall that lets you monitor and manage web requests that are forwarded to protected AWS resources.",
+  "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "version": "1.0.0",
+  "category": "DevOps",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Region",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "aws_region",
+        "placeholder": "e.g. us-east-2",
+        "tooltip": "Your account's AWS region",
+        "description": "AWS region of your account to access the AWS WAF services."
+      },
+      {
+        "title": "Configuration Type",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "select",
+        "name": "config_type",
+        "tooltip": "AWS configuration type",
+        "description": "AWS configuration type that determines the authentication mechanism that you will use to provide credentials and access AWS WAF. You can choose either IAM Role or Access Credentials to connect to AWS. AWS Identity and Access Management (IAM) role is an IAM entity that defines a set of permissions for making AWS service requests. IAM roles are not associated with a specific user or group. Instead, trusted entities assume roles, such as IAM users, applications, or AWS services.If you choose IAM Role, then you must specify the following parameter:\n\t\t\t\nAWS Instance IAM Role: IAM Role of your AWS instance to access AWS services.\n\n\t\t\tIf you choose Access Credentials, then you must specify the following parameters:\n\n\t\t\t\nAccess Key: The AWS Access Key to access AWS services. \nSecret Key: Key of the AWS Secret Access to access AWS services.",
+        "options": [
+          "IAM Role",
+          "Access Credentials"
+        ],
+        "onchange": {
+          "IAM Role": [
+            {
+              "title": "AWS Instance IAM Role",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "aws_iam_role",
+              "tooltip": "IAM Role of your AWS instance to access AWS services",
+              "description": "IAM Role of your AWS instance to access AWS services."
+            }
+          ],
+          "Access Credentials": [
+            {
+              "title": "Access Key",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "access_key",
+              "tooltip": "The AWS Access Key to access AWS services",
+              "description": "The AWS Access Key to access AWS services.  "
+            },
+            {
+              "title": "Secret Key",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "password",
+              "name": "secret_key",
+              "tooltip": "Key of the AWS Secret Access to access AWS services",
+              "description": "Key of the AWS Secret Access to access AWS services."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Verify SSL",
+        "name": "verify_ssl",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "value": true,
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "title": "Create IP Set",
+      "description": "Creates an IP set, which you use to identify web requests that originate from specific IP addresses or ranges of IP addresses.",
+      "operation": "create_ip_set",
+      "category": "investigation",
+      "annotation": "create_ip_set",
+      "parameters": [
+        {
+          "title": "Name",
+          "name": "Name",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the name of the IP set. You cannot change the name of an IP set after you create it.",
+          "description": "Specify the name of the IP set. You cannot change the name of an IP set after you create it."
+        },
+        {
+          "title": "Scope",
+          "name": "Scope",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "options": [
+            "Cloud Front",
+            "Regional"
+          ],
+          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
+          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
+        },
+        {
+          "title": "IP Address Version",
+          "name": "IPAddressVersion",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "options": [
+            "IPV4",
+            "IPV6"
+          ],
+          "tooltip": "Specify the version of the IP addresses, either IPV4 or IPV6.",
+          "description": "Specify the version of the IP addresses, either IPV4 or IPV6."
+        },
+        {
+          "title": "IP Addresses",
+          "name": "Addresses",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests.",
+          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests."
+        },
+        {
+          "title": "Description",
+          "name": "Description",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Specify a description of the IP set that helps with identification.",
+          "description": "Specify a description of the IP set that helps with identification."
+        },
+        {
+          "title": "Tags",
+          "name": "Tags",
+          "type": "json",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Specify tags to associate with the resource. Tags can be used to categorize and manage your resources.",
+          "description": "Specify tags to associate with the resource. Tags can be used to categorize and manage your resources.",
+          "value": "[\n        {\n            'Key': 'string',\n            'Value': 'string'\n        },\n    ]"
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "Summary": {
+          "Name": "",
+          "Id": "",
+          "Description": "",
+          "LockToken": "",
+          "ARN": ""
+        },
+        "ResponseMetadata": {
+          "RequestId": "",
+          "HTTPStatusCode": "",
+          "HTTPHeaders": {
+            "x-amzn-requestid": "",
+            "content-type": "",
+            "content-length": "",
+            "date": ""
+          },
+          "RetryAttempts": ""
+        }
+      }
+    },
+    {
+      "title": "Update IP Set",
+      "description": "Updates the specified IP set based on the input parameters specified.",
+      "operation": "update_ip_set",
+      "category": "investigation",
+      "annotation": "update_ip_set",
+      "parameters": [
+        {
+          "title": "Name",
+          "name": "Name",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the name of the IP set to update. Note you cannot change the name of an IP set after you create it.",
+          "description": "Specify the name of the IP set to update. Note you cannot change the name of an IP set after you create it."
+        },
+        {
+          "title": "ID",
+          "name": "Id",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the ID of the IP set to update.",
+          "description": "Specify the ID of the IP set to update."
+        },
+        {
+          "title": "Scope",
+          "name": "Scope",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "options": [
+            "Cloud Front",
+            "Regional"
+          ],
+          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
+          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
+        },
+        {
+          "title": "Lock Token",
+          "name": "LockToken",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the token used for optimistic locking. WAF returns a token to your get and list IP set requests, to mark the state of the entity at the time of the request.",
+          "description": "Specify the token used for optimistic locking. WAF returns a token to your get and list IP set requests, to mark the state of the entity at the time of the request."
+        },
+        {
+          "title": "IP Addresses To Add",
+          "name": "AddressesToAdd",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests.",
+          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests."
+        },
+        {
+          "title": "IP Addresses To Remove",
+          "name": "AddressesToRemove",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests.",
+          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests."
+        },
+        {
+          "title": "Description",
+          "name": "Description",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Specify a description of the IP set that helps with identification.",
+          "description": "Specify a description of the IP set that helps with identification."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "ResponseMetadata": {
+          "RequestId": "",
+          "HTTPStatusCode": "",
+          "HTTPHeaders": {
+            "x-amzn-requestid": "",
+            "content-type": "",
+            "content-length": "",
+            "date": ""
+          },
+          "RetryAttempts": ""
+        }
+      }
+    },
+    {
+      "title": "List IP Set",
+      "description": "Retrieves an array of IP set Summary objects for the IP sets that you manage.",
+      "operation": "list_ip_set",
+      "category": "investigation",
+      "annotation": "list_ip_set",
+      "parameters": [
+        {
+          "title": "Scope",
+          "name": "Scope",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "options": [
+            "Cloud Front",
+            "Regional"
+          ],
+          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
+          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
+        },
+        {
+          "title": "Limit",
+          "name": "Limit",
+          "type": "integer",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Specify the maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a NextMarker value that you can use in a subsequent call to get the next batch of objects.",
+          "description": "Specify the maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a NextMarker value that you can use in a subsequent call to get the next batch of objects."
+        },
+        {
+          "title": "Next Marker",
+          "name": "NextMarker",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Specify the marker from the prior call to retrieve the next batch of objects.",
+          "description": "Specify the marker from the prior call to retrieve the next batch of objects."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "NextMarker": "",
+        "IPSets": [
+          {
+            "Name": "",
+            "Id": "",
+            "Description": "",
+            "LockToken": "",
+            "ARN": ""
+          }
+        ],
+        "ResponseMetadata": {
+          "RequestId": "",
+          "HTTPStatusCode": "",
+          "HTTPHeaders": {
+            "x-amzn-requestid": "",
+            "content-type": "",
+            "content-length": "",
+            "date": ""
+          },
+          "RetryAttempts": ""
+        }
+      }
+    },
+    {
+      "title": "Get IP Set",
+      "description": "Retrieves the specified IP set based on the input parameters specified.",
+      "operation": "get_ip_set",
+      "category": "investigation",
+      "annotation": "get_ip_set",
+      "parameters": [
+        {
+          "title": "Name",
+          "name": "Name",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the name of the IP set to retrieve.",
+          "description": "Specify the name of the IP set to retrieve."
+        },
+        {
+          "title": "Scope",
+          "name": "Scope",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "options": [
+            "Cloud Front",
+            "Regional"
+          ],
+          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
+          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
+        },
+        {
+          "title": "ID",
+          "name": "Id",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the ID of the IP set to retrieve.",
+          "description": "Specify the ID of the IP set to retrieve."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "IPSet": {
+          "Name": "",
+          "Id": "",
+          "ARN": "",
+          "Description": "",
+          "IPAddressVersion": "",
+          "Addresses": []
+        },
+        "LockToken": "",
+        "ResponseMetadata": {
+          "RequestId": "",
+          "HTTPStatusCode": "",
+          "HTTPHeaders": {
+            "x-amzn-requestid": "",
+            "content-type": "",
+            "content-length": "",
+            "date": ""
+          },
+          "RetryAttempts": ""
+        }
+      }
+    },
+    {
+      "title": "Delete IP Set",
+      "description": "Deletes the specified IP set based on the input parameters specified.",
+      "operation": "delete_ip_set",
+      "category": "investigation",
+      "annotation": "delete_ip_set",
+      "parameters": [
+        {
+          "title": "Name",
+          "name": "Name",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the name of the IP set to delete.",
+          "description": "Specify the name of the IP set to delete."
+        },
+        {
+          "title": "Scope",
+          "name": "Scope",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "options": [
+            "Cloud Front",
+            "Regional"
+          ],
+          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
+          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
+        },
+        {
+          "title": "ID",
+          "name": "Id",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the ID of the IP set to delete.",
+          "description": "Specify the ID of the IP set to delete."
+        },
+        {
+          "title": "Lock Token",
+          "name": "LockToken",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the token used for optimistic locking. WAF returns a token to your get and list IP set requests, to mark the state of the entity at the time of the request.",
+          "description": "Specify the token used for optimistic locking. WAF returns a token to your get and list IP set requests, to mark the state of the entity at the time of the request."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "ResponseMetadata": {
+          "RequestId": "",
+          "HTTPStatusCode": "",
+          "HTTPHeaders": {
+            "x-amzn-requestid": "",
+            "content-type": "",
+            "content-length": "",
+            "date": ""
+          },
+          "RetryAttempts": ""
+        }
+      }
+    }
+  ]
+}
