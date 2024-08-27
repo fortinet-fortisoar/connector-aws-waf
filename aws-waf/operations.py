@@ -106,7 +106,7 @@ def _boto_execute(client, function, **kwargs):
 
 def check_health(config):
     try:
-        available = _create_client(config)
+        available = list_ip_set(config, {})
         if available:
             return True
         else:
@@ -122,18 +122,21 @@ def build_payload(params):
 
 
 def get_ip_set(config, params):
+    params['Scope'] = config.get('Scope')
     client = _create_client(config)
     params = build_payload(params)
     return _boto_execute(client, "get_ip_set", **params)
 
 
 def list_ip_set(config, params):
+    params['Scope'] = config.get('Scope')
     client = _create_client(config)
     params = build_payload(params)
     return _boto_execute(client, "list_ip_sets", **params)
 
 
 def create_ip_set(config, params):
+    params['Scope'] = config.get('Scope')
     client = _create_client(config)
     params = build_payload(params)
     params['Addresses'] = [] if not params.get('Addresses') else [str(x.strip()) for x in params.get('Addresses').split(",")]
@@ -141,12 +144,14 @@ def create_ip_set(config, params):
 
 
 def delete_ip_set(config, params):
+    params['Scope'] = config.get('Scope')
     client = _create_client(config)
     params = build_payload(params)
     return _boto_execute(client, "delete_ip_set", **params)
 
 
 def update_ip_set(config, params):
+    params['Scope'] = config.get('Scope')
     client = _create_client(config)
     params = build_payload(params)
     AddressesToAdd = [] if not params.get('AddressesToAdd') else [str(x.strip()) for x in params.get('AddressesToAdd').split(",")]

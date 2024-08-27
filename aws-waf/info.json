@@ -7,6 +7,7 @@
   "cs_compatible": true,
   "version": "1.0.0",
   "category": "DevOps",
+  "contributor": "",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "help_online": "",
@@ -22,6 +23,20 @@
         "placeholder": "e.g. us-east-2",
         "tooltip": "Your account's AWS region",
         "description": "AWS region of your account to access the AWS WAF services."
+      },
+      {
+          "title": "Scope",
+          "name": "Scope",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "options": [
+            "Cloud Front",
+            "Regional"
+          ],
+          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
+          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
       },
       {
         "title": "Configuration Type",
@@ -102,20 +117,6 @@
           "required": true,
           "tooltip": "Specify the name of the IP set. You cannot change the name of an IP set after you create it.",
           "description": "Specify the name of the IP set. You cannot change the name of an IP set after you create it."
-        },
-        {
-          "title": "Scope",
-          "name": "Scope",
-          "type": "select",
-          "visible": true,
-          "editable": true,
-          "required": true,
-          "options": [
-            "Cloud Front",
-            "Regional"
-          ],
-          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
-          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
         },
         {
           "title": "IP Address Version",
@@ -213,20 +214,6 @@
           "description": "Specify the ID of the IP set to update."
         },
         {
-          "title": "Scope",
-          "name": "Scope",
-          "type": "select",
-          "visible": true,
-          "editable": true,
-          "required": true,
-          "options": [
-            "Cloud Front",
-            "Regional"
-          ],
-          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
-          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
-        },
-        {
           "title": "Lock Token",
           "name": "LockToken",
           "type": "text",
@@ -269,6 +256,7 @@
       ],
       "enabled": true,
       "output_schema": {
+        "NextLockToken": "",
         "ResponseMetadata": {
           "RequestId": "",
           "HTTPStatusCode": "",
@@ -289,20 +277,6 @@
       "category": "investigation",
       "annotation": "list_ip_set",
       "parameters": [
-        {
-          "title": "Scope",
-          "name": "Scope",
-          "type": "select",
-          "visible": true,
-          "editable": true,
-          "required": true,
-          "options": [
-            "Cloud Front",
-            "Regional"
-          ],
-          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
-          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
-        },
         {
           "title": "Limit",
           "name": "Limit",
@@ -367,20 +341,6 @@
           "description": "Specify the name of the IP set to retrieve."
         },
         {
-          "title": "Scope",
-          "name": "Scope",
-          "type": "select",
-          "visible": true,
-          "editable": true,
-          "required": true,
-          "options": [
-            "Cloud Front",
-            "Regional"
-          ],
-          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
-          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
-        },
-        {
           "title": "ID",
           "name": "Id",
           "type": "text",
@@ -431,20 +391,6 @@
           "required": true,
           "tooltip": "Specify the name of the IP set to delete.",
           "description": "Specify the name of the IP set to delete."
-        },
-        {
-          "title": "Scope",
-          "name": "Scope",
-          "type": "select",
-          "visible": true,
-          "editable": true,
-          "required": true,
-          "options": [
-            "Cloud Front",
-            "Regional"
-          ],
-          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
-          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
         },
         {
           "title": "ID",
