@@ -20,7 +20,6 @@ MAPPING = {
 def _get_credentials_from_config(config):
     aws_access_key = _get_input(config, "access_key", str)
     aws_region = _get_input(config, "aws_region", str) if _get_input(config, "aws_region", str) else 'us-east-1'
-    logger.error("aws region {}".format(aws_region))
     aws_secret_access_key = _get_input(config, "secret_key", str)
     verify_ssl = _get_input(config, "verify_ssl", bool)
     return aws_access_key, aws_region, aws_secret_access_key, verify_ssl
