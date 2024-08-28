@@ -14,29 +14,33 @@
   "configuration": {
     "fields": [
       {
-        "title": "Region",
-        "required": true,
-        "editable": true,
+        "title": "Scope",
+        "name": "Scope",
+        "type": "select",
         "visible": true,
-        "type": "text",
-        "name": "aws_region",
-        "placeholder": "e.g. us-east-2",
-        "tooltip": "Your account's AWS region",
-        "description": "AWS region of your account to access the AWS WAF services."
-      },
-      {
-          "title": "Scope",
-          "name": "Scope",
-          "type": "select",
-          "visible": true,
-          "editable": true,
-          "required": true,
-          "options": [
-            "Cloud Front",
-            "Regional"
-          ],
-          "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application.",
-          "description": "Specify whether this is for an amazon cloud front distribution or for a regional application."
+        "editable": true,
+        "required": true,
+        "options": [
+          "Cloud Front",
+          "Regional"
+        ],
+        "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application. Note if cloud front is specified US East (N. Virginia) region will be used.",
+        "description": "Specify whether this is for an amazon cloud front distribution or for a regional application. Note if cloud front is specified US East (N. Virginia) region will be used.",
+        "onchange": {
+          "Regional": [
+            {
+              "title": "Region",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "aws_region",
+              "placeholder": "e.g. us-east-2",
+              "tooltip": "Your account's AWS region",
+              "description": "AWS region of your account to access the AWS WAF services."
+            }
+          ]
+        }
       },
       {
         "title": "Configuration Type",

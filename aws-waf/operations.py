@@ -17,10 +17,10 @@ MAPPING = {
     'Regional': 'REGIONAL'
 }
 
-
 def _get_credentials_from_config(config):
     aws_access_key = _get_input(config, "access_key", str)
-    aws_region = _get_input(config, "aws_region", str)
+    aws_region = _get_input(config, "aws_region", str) if _get_input(config, "aws_region", str) else 'us-east-1'
+    logger.error("aws region {}".format(aws_region))
     aws_secret_access_key = _get_input(config, "secret_key", str)
     verify_ssl = _get_input(config, "verify_ssl", bool)
     return aws_access_key, aws_region, aws_secret_access_key, verify_ssl
@@ -46,7 +46,7 @@ def _create_client(config):
     try:
         config_type = _get_input(config, "config_type", str)
         if config_type == "IAM Role":
-            aws_region = _get_input(config, "aws_region", str)
+            aws_region = _get_input(config, "aws_region", str) if _get_input(config, "aws_region", str) else 'us-east-1'
             verify_ssl = _get_input(config, "verify_ssl", bool)
             data = _get_temp_credentials(config)
             boto_client = client('wafv2', region_name=aws_region, aws_access_key_id=data.get('AccessKeyId'),
