@@ -144,7 +144,7 @@
           "editable": true,
           "required": false,
           "tooltip": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests.",
-          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests."
+          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests. For more information on specifying the IP addresses please refer https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateIPSet.html"
         },
         {
           "title": "Description",
@@ -235,7 +235,7 @@
           "editable": true,
           "required": false,
           "tooltip": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests.",
-          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests."
+          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests. For more information on specifying the IP addresses please refer https://docs.aws.amazon.com/waf/latest/APIReference/API_UpdateIPSet.html"
         },
         {
           "title": "IP Addresses To Remove",
@@ -245,7 +245,7 @@
           "editable": true,
           "required": false,
           "tooltip": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests.",
-          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests."
+          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests. For more information on specifying the IP addresses please refer https://docs.aws.amazon.com/waf/latest/APIReference/API_UpdateIPSet.html"
         },
         {
           "title": "Description",
