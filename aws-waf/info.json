@@ -10,7 +10,7 @@
   "contributor": "",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/aws-waf/951/aws-waf-v1-0-0",
   "configuration": {
     "fields": [
       {
@@ -25,7 +25,7 @@
           "Regional"
         ],
         "tooltip": "Specify whether this is for an amazon cloud front distribution or for a regional application. Note if cloud front is specified US East (N. Virginia) region will be used.",
-        "description": "Specify whether this is for an amazon cloud front distribution or for a regional application. Note if cloud front is specified US East (N. Virginia) region will be used.",
+        "description": "Select the scope of the configuration. You can choose from the following options: Cloud front: Select this option to use U.S. East (N. Virginia) region. Regional: Specify the AWS region of your account.",
         "onchange": {
           "Regional": [
             {
@@ -50,7 +50,7 @@
         "type": "select",
         "name": "config_type",
         "tooltip": "AWS configuration type",
-        "description": "AWS configuration type that determines the authentication mechanism that you will use to provide credentials and access AWS WAF. You can choose either IAM Role or Access Credentials to connect to AWS. AWS Identity and Access Management (IAM) role is an IAM entity that defines a set of permissions for making AWS service requests. IAM roles are not associated with a specific user or group. Instead, trusted entities assume roles, such as IAM users, applications, or AWS services.If you choose IAM Role, then you must specify the following parameter:\n\t\t\t\nAWS Instance IAM Role: IAM Role of your AWS instance to access AWS services.\n\n\t\t\tIf you choose Access Credentials, then you must specify the following parameters:\n\n\t\t\t\nAccess Key: The AWS Access Key to access AWS services. \nSecret Key: Key of the AWS Secret Access to access AWS services.",
+        "description": "Specify the AWS configuration type to determine the authentication mechanism for accessing AWS WAF. You can choose either IAM Role or Access Credentials to connect to AWS. You can select from the following options: IAM Role: Select to specify the IAM role of your AWS instance, in the IAM Role field. Access Credentials: Select to specify your access credentials for AWS WAF in the following fields: Access Key: Specify the AWS Access Key to access AWS services. Secret Key: Specify the AWS Secret key to access AWS services.",
         "options": [
           "IAM Role",
           "Access Credentials"
@@ -100,14 +100,14 @@
         "visible": true,
         "type": "checkbox",
         "value": true,
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+        "description": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is selected, i.e., set to true."
       }
     ]
   },
   "operations": [
     {
       "title": "Create IP Set",
-      "description": "Creates an IP set, which you use to identify web requests that originate from specific IP addresses or ranges of IP addresses.",
+      "description": "Creates an IP set to identify web requests that originate from these specific IP addresses or ranges based on the IP set name, IP address version, and other input parameters that you have specified.",
       "operation": "create_ip_set",
       "category": "investigation",
       "annotation": "create_ip_set",
@@ -120,7 +120,7 @@
           "editable": true,
           "required": true,
           "tooltip": "Specify the name of the IP set. You cannot change the name of an IP set after you create it.",
-          "description": "Specify the name of the IP set. You cannot change the name of an IP set after you create it."
+          "description": "Specify the name of the IP set to create on AWS WAF. NOTE: You cannot change the name of an IP set after you have created it."
         },
         {
           "title": "IP Address Version",
@@ -134,7 +134,7 @@
             "IPV6"
           ],
           "tooltip": "Specify the version of the IP addresses, either IPV4 or IPV6.",
-          "description": "Specify the version of the IP addresses, either IPV4 or IPV6."
+          "description": "Select the version of the IP addresses to add in the IP Set being created. You can choose from the following options: IPV4 IPV6"
         },
         {
           "title": "IP Addresses",
@@ -144,7 +144,7 @@
           "editable": true,
           "required": false,
           "tooltip": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests.",
-          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests. For more information on specifying the IP addresses please refer https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateIPSet.html"
+          "description": "(Optional) Specify an IP address to add to the IP Set being created for AWS WAF to inspect for incoming requests. You can specify multiple IP addresses as comma-separated values. For more information on specifying IP addresses, refer https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateIPSet.html."
         },
         {
           "title": "Description",
@@ -154,7 +154,7 @@
           "editable": true,
           "required": false,
           "tooltip": "Specify a description of the IP set that helps with identification.",
-          "description": "Specify a description of the IP set that helps with identification."
+          "description": "(Optional) Specify a description of the IP set being created to help with identification."
         },
         {
           "title": "Tags",
@@ -164,7 +164,7 @@
           "editable": true,
           "required": false,
           "tooltip": "Specify tags to associate with the resource. Tags can be used to categorize and manage your resources.",
-          "description": "Specify tags to associate with the resource. Tags can be used to categorize and manage your resources.",
+          "description": "(Optional) Specify tags to associate with the resource. Tags are used to categorize and manage your resources.",
           "value": "[\n        {\n            'Key': 'string',\n            'Value': 'string'\n        },\n    ]"
         }
       ],
@@ -192,7 +192,7 @@
     },
     {
       "title": "Update IP Set",
-      "description": "Updates the specified IP set based on the input parameters specified.",
+      "description": "Updates the specified IP set based on the IP set name, ID, and other input parameters that you have specified.",
       "operation": "update_ip_set",
       "category": "investigation",
       "annotation": "update_ip_set",
@@ -205,7 +205,7 @@
           "editable": true,
           "required": true,
           "tooltip": "Specify the name of the IP set to update. Note you cannot change the name of an IP set after you create it.",
-          "description": "Specify the name of the IP set to update. Note you cannot change the name of an IP set after you create it."
+          "description": "Specify the name of the IP set to update on AWS WAF. NOTE: You cannot change the name of an IP set after you have created it."
         },
         {
           "title": "ID",
@@ -215,7 +215,7 @@
           "editable": true,
           "required": true,
           "tooltip": "Specify the ID of the IP set to update.",
-          "description": "Specify the ID of the IP set to update."
+          "description": "Specify the ID of the IP set to update on AWS WAF."
         },
         {
           "title": "Lock Token",
@@ -225,7 +225,7 @@
           "editable": true,
           "required": true,
           "tooltip": "Specify the token used for optimistic locking. WAF returns a token to your get and list IP set requests, to mark the state of the entity at the time of the request.",
-          "description": "Specify the token used for optimistic locking. WAF returns a token to your get and list IP set requests, to mark the state of the entity at the time of the request."
+          "description": "Specify the token to use for optimistic locking. AWS WAF returns a token to your retrieve and list IP set requests, and to mark the state of the entity at the time of the request."
         },
         {
           "title": "IP Addresses To Add",
@@ -235,7 +235,7 @@
           "editable": true,
           "required": false,
           "tooltip": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests.",
-          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests. For more information on specifying the IP addresses please refer https://docs.aws.amazon.com/waf/latest/APIReference/API_UpdateIPSet.html"
+          "description": "(Optional) Specify an IP address to add to the IP Set being updated for AWS WAF to inspect for incoming requests. You can specify multiple IP addresses as comma-separated values. For more information on specifying IP addresses, refer https://docs.aws.amazon.com/waf/latest/APIReference/API_UpdateIPSet.html."
         },
         {
           "title": "IP Addresses To Remove",
@@ -245,7 +245,7 @@
           "editable": true,
           "required": false,
           "tooltip": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests.",
-          "description": "Specify one or more IP addresses as comma separated values, that you want AWS WAF to inspect for in incoming requests. For more information on specifying the IP addresses please refer https://docs.aws.amazon.com/waf/latest/APIReference/API_UpdateIPSet.html"
+          "description": "(Optional) Specify an IP address to remove from the IP Set being updated for AWS WAF to inspect for incoming requests. You can specify multiple IP addresses as comma-separated values. For more information on specifying IP addresses, refer https://docs.aws.amazon.com/waf/latest/APIReference/API_UpdateIPSet.html."
         },
         {
           "title": "Description",
@@ -255,7 +255,7 @@
           "editable": true,
           "required": false,
           "tooltip": "Specify a description of the IP set that helps with identification.",
-          "description": "Specify a description of the IP set that helps with identification."
+          "description": "(Optional) Specify a description of the IP set being updated to help with identification."
         }
       ],
       "enabled": true,
@@ -289,7 +289,7 @@
           "editable": true,
           "required": false,
           "tooltip": "Specify the maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a NextMarker value that you can use in a subsequent call to get the next batch of objects.",
-          "description": "Specify the maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a NextMarker value that you can use in a subsequent call to get the next batch of objects."
+          "description": "(Optional) Specify the maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a NextMarker value that you can use in a subsequent call to get the next batch of objects."
         },
         {
           "title": "Next Marker",
@@ -299,7 +299,7 @@
           "editable": true,
           "required": false,
           "tooltip": "Specify the marker from the prior call to retrieve the next batch of objects.",
-          "description": "Specify the marker from the prior call to retrieve the next batch of objects."
+          "description": "(Optional) Specify a NextMarker from the previous call to retrieve the next batch of objects."
         }
       ],
       "enabled": true,
@@ -414,7 +414,7 @@
           "editable": true,
           "required": true,
           "tooltip": "Specify the token used for optimistic locking. WAF returns a token to your get and list IP set requests, to mark the state of the entity at the time of the request.",
-          "description": "Specify the token used for optimistic locking. WAF returns a token to your get and list IP set requests, to mark the state of the entity at the time of the request."
+          "description": "Specify the token to use for optimistic locking. AWS WAF returns a token to your retrieve and list IP set requests, and to mark the state of the entity at the time of the request."
         }
       ],
       "enabled": true,
